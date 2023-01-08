@@ -16,22 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from epic_events.views import AccountListCreateView, AccountRUDView, ContractListCreateView, ContractRUDView, \
+    EventRUDView, EventCreateView, AccountSearchView, ContractSearchView, EventSearchView
 
-# from epic_events.views import AccountListCreateView, AccountRUDView, ContractListCreateView, ContractRUDView, \
-#     EventRUDView, EventCreateView, AccountSearchView, ContractSearchView, EventSearchView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('', RedirectView.as_view(url='accounts/'), name='home'),
-    # path('accounts/', AccountListCreateView.as_view(), name='account_list_create'),
-    # path('accounts/search/', AccountSearchView.as_view(), name='account_search'),
-    # path('contracts/search/', ContractSearchView.as_view(), name='contract_search'),
-    # path('events/search/', EventSearchView.as_view(), name='event_search'),
-    # path('accounts/<int:id>/', AccountRUDView.as_view(), name='account_RUD'),
-    # path('accounts/<int:id>/contracts/', ContractListCreateView.as_view(), name='contract_list_create'),
-    # path('accounts/<int:id>/contracts/<int:contract_id>/', ContractRUDView.as_view(), name='contract_RUD'),
-    # path('accounts/<int:id>/contracts/<int:contract_id>/event/', EventCreateView.as_view(), name='event_create'),
-    # path('accounts/<int:id>/contracts/<int:contract_id>/event/edit/', EventRUDView.as_view(), name='event_RUD'),
+     path('accounts/', AccountListCreateView.as_view(), name='account_list_create'),
+    path('accounts/search/', AccountSearchView.as_view(), name='account_search'),
+    path('contracts/search/', ContractSearchView.as_view(), name='contract_search'),
+    path('events/search/', EventSearchView.as_view(), name='event_search'),
+    path('accounts/<int:id>/', AccountRUDView.as_view(), name='account_RUD'),
+    path('accounts/<int:id>/contracts/', ContractListCreateView.as_view(), name='contract_list_create'),
+    path('accounts/<int:id>/contracts/<int:contract_id>/', ContractRUDView.as_view(), name='contract_RUD'),
+    path('accounts/<int:id>/contracts/<int:contract_id>/event/', EventCreateView.as_view(), name='event_create'),
+    path('accounts/<int:id>/contracts/<int:contract_id>/event/edit/', EventRUDView.as_view(), name='event_RUD'),
+    
 
 ]
