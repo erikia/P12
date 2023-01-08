@@ -24,7 +24,7 @@ Dans le Windows Powershell il faudra cloner le git.
     $ git clone https://github.com/erikia/P12.git
 
 ### Activer l'environnement virtuel
-    $ cd P10 
+    $ cd P12
     $ python -m venv env 
     $ ~env\scripts\activate
     
@@ -47,7 +47,7 @@ Dans le terminal, il faudra cloner le git.
     $ git clone https://github.com/erikia/P12.git
 
 ### Activer l'environnement virtuel
-    $ cd P10
+    $ cd P12
     $ python3 -m venv env 
     $ source env/bin/activate
     
