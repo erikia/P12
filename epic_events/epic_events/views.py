@@ -25,7 +25,6 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 
-
 class AccountListCreateView(generics.ListCreateAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -35,7 +34,7 @@ class AccountListCreateView(generics.ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = AccountSerializer(queryset, many=True)
         return Response(serializer.data)
-
+    
     def post(self, request, *args, **kwargs):
         serializer = AccountSerializer(data=request.data)
 
@@ -43,9 +42,8 @@ class AccountListCreateView(generics.ListCreateAPIView):
             # Log a debugging message
             logger.debug("Creating account: %s", serializer.data)
             serializer.save(assignee=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # Log an error message
-        logger.error("Account serializer errors: %s", serializer.errors)
+            data = serializer.data
+            return Response(data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

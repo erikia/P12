@@ -20,8 +20,6 @@ from epic_events.views import AccountListCreateView, AccountRUDView, ContractLis
     EventRUDView, EventCreateView, AccountSearchView, ContractSearchView, EventSearchView
 
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
