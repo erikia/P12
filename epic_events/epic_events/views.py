@@ -39,8 +39,6 @@ class AccountListCreateView(generics.ListCreateAPIView):
         serializer = AccountSerializer(data=request.data)
 
         if serializer.is_valid():
-            # Log a debugging message
-            logger.debug("Creating account: %s", serializer.data)
             serializer.save(assignee=request.user)
             data = serializer.data
             return Response(data, status=status.HTTP_201_CREATED)
